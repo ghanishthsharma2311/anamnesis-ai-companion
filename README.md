@@ -89,7 +89,7 @@ Follow these steps to set up and run the project locally on your development mac
     *(You can replace `chrome` with other web browsers if installed.)*
 
 ## 📸 App Screenshots & Examples
-
+<!-- 
 Here are some visual examples to showcase the application's interface and functionality:
 
 ### Anamnesis Data Entry Interface
@@ -107,4 +107,25 @@ Here are some visual examples to showcase the application's interface and functi
 ![For sharing and exporting to csv](screenshots/to_csv.png)
 
 ### CSV Export Example 
-![csv Example](screenshots/csv.jpg)
+![csv Example](screenshots/csv.jpg) -->
+
+<h3 align="center">Application Interface and Functionality</h3>
+
+<p align="center">
+  <img src="screenshots/initial_display.png" alt="Data Entry UI" width="30%" />
+  <img src="screenshots/while_analysing_with_transcript.png" alt="Analysing" width="30%" />
+  <img src="screenshots/analysis_result.png" alt="AI Result" width="30%" />
+</p>
+
+<p align="center">
+  <em>Anamnesis data entry, GPT-based analysis in progress, and result output</em>
+</p>
+
+<p align="center">
+  <img src="screenshots/to_csv.png" alt="Share as CSV" width="45%" />
+  <img src="screenshots/csv.jpg" alt="CSV File Example" width="45%" />
+</p>
+
+<p align="center">
+  <em>Export and share results via CSV</em>
+</p>
