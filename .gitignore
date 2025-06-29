@@ -1,0 +1,162 @@
+# # This .gitignore file is based on the standard Flutter .gitignore,
+# # with additions for common project-specific ignores and sensitive files.
+
+# # Flutter/Dart specific ignores
+# .dart_tool/
+# .flutter-plugins
+# .flutter-plugins-dependencies
+# .packages
+# .vs_code/
+# .idea/
+# .env # IMPORTANT: Ignore your .env file which contains API keys.
+# *.iml
+# *.lock
+# build/
+# .ios/Flutter/Generated.xcconfig
+# .ios/Flutter/flutter_export_environment.sh
+# .android/local.properties
+# .android/gradle.properties
+# .android/.gradle/
+# .android/build/
+# .android/app/build/
+# .android/app/.cxx/
+# .android/app/*.iml
+
+# # VS Code specific (if you use VS Code)
+# .vscode/
+# .vscode/*.log
+# .vscode/*.txt
+# .vscode/*.cache
+# .vscode/*.tmp
+
+# # IntelliJ/Android Studio specific (if you use these IDEs)
+# *.iml
+# .idea/
+# .idea/libraries/
+# .idea/modules.xml
+# .idea/workspace.xml
+
+# # macOS specific
+# .DS_Store
+# .Trashes
+# Thumbs.db # Windows thumbnails
+
+# # Project specific caches and temporary files
+# *.log
+# *.tmp
+# *.bak
+# *~
+# .pub-cache/
+
+# # Crashlytics/Fabric (if used)
+# Crashlytics/
+
+# # Fastlane (if used for CI/CD)
+# fastlane/report.xml
+# fastlane/test_output/
+
+# # Android specific ignores
+# # Generated files
+# /android/app/src/main/assets/flutter_assets/
+# /android/build/
+# /android/.gradle/
+# /android/local.properties
+# /android/key.properties
+# /android/app/release/
+# /android/app/debug/
+# /android/app/*.keystore
+# /android/app/google-services.json # If this contains sensitive dev keys
+# /android/captures/
+
+# # Gradle related
+# .gradle/
+# gradle-wrapper-temp/
+
+# # iOS specific ignores
+# # Generated files
+# /ios/.symlinks/
+# /ios/Flutter/App.framework/
+# /ios/Flutter/Flutter.framework/
+# /ios/Flutter/flutter_assets/
+# /ios/Flutter/Generated.xcconfig
+# /ios/Flutter/flutter_export_environment.sh
+# /ios/Pods/
+# /ios/Runner/*.xcodeproj/project.pbxproj # Can be ignored if using Xcode project only for Flutter, but keep if you modify it directly
+# /ios/Runner/GeneratedPluginRegistrant.*
+# /ios/build/
+
+# # CocoaPods related
+# /ios/.build/
+# /ios/Pods/
+# /ios/Podfile.lock
+# /ios/.bundle/
+
+# # Web specific ignores
+# /web/index.html
+# /web/flutter_bootstrap.js
+# /web/assets/
+# /web/canvaskit/
+
+# # Desktop specific ignores (if you're building for desktop)
+# /macos/build/
+# /windows/build/
+# /linux/build/
+
+# # IDE-specific files for other IDEs
+# nbproject/ # NetBeans
+# *.esproj # Visual Studio for web
+
+# # Any temporary files created by your system or tools
+# # For example, if you see files like 'my_file.csv~' or '.#my_file.csv'
+# # you might add patterns like:
+# *~
+# .#* 
+
+
+# Dart/Flutter
+.dart_tool/
+.packages
+.pub-cache/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+
+# Secrets & Environment
+.env
+.env.*
+
+# System / Misc
+.DS_Store
+*.log
+*.tmp
+*.lock
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# Android
+android/.gradle/
+android/app/build/
+android/build/
+*.keystore
+local.properties
+
+# iOS
+ios/Pods/
+ios/.symlinks/
+ios/build/
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+ios/Runner.xcworkspace/
+
+# Desktop
+macos/build/
+linux/build/
+windows/build/
+
+# Web
+web/assets/
+web/canvaskit/
