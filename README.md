@@ -95,41 +95,41 @@ graph TD
         B --> C{Starts Flutter App<br>MyApp Widget}
     end
 
-    subgraph User Interface: AnamnesisScreen (lib/screens/anamnesis_screen.dart)
+    subgraph User Interface
         C --> D[AnamnesisScreen UI]
-        D -- User Types/Pastes Transcript --> E[TextFormField (Transcript Input)]
+        D -- "User Enters Transcript" --> E[TextFormField Input]
         D -- "User Taps 'Analysieren' Button" --> F{_analyzeTranscript() Method}
     end
 
     subgraph Data Processing & AI Integration
         F --> G1(Set _isLoading = true<br>Show Progress Indicator)
-        F -- "1. Load Questionnaire" --> H[QuestionnaireService.loadQuestionnaire()<br>(lib/data/questionnaire_data.dart)]
-        H -- "Reads 'assets/data/2025-03-26 NursIT Anamnesis FHIR Questionnaire with detailed descriptions.json'" --> I[FHIR Questionnaire Data (Dart Map)]
+        F -- "1. Load Questionnaire" --> H[QuestionnaireService.loadQuestionnaire()]
+        H -- "Reads FHIR Questionnaire JSON" --> I[FHIR Questionnaire Data]
         I --> F
-        F -- "2. Analyze Transcript" --> J[OpenAIService.analyzeTranscript()<br>(lib/services/openai_service.dart)]
-        J -- "Constructs Prompt with Transcript + FHIR JSON" --> K(OpenAI API Request<br>via http.post)
+        F -- "2. Analyze Transcript" --> J[OpenAIService.analyzeTranscript()]
+        J -- "Builds Prompt (Transcript + FHIR JSON)" --> K(OpenAI API Request)
         K -- "Returns Raw JSON Response (linkId, answer)" --> J
         J -- "Calls _parseApiResponse()" --> L[OpenAIService._parseApiResponse()]
-        L -- "For each linkId, calls _findQuestionText()" --> M[OpenAIService._findQuestionText()<br>(Looks up 'text' in FHIR JSON)]
+        L -- "For each linkId, calls _findQuestionText()" --> M[OpenAIService._findQuestionText()]
         M -- "Returns Full Question Text" --> L
-        L --> N[List&lt;AnamnesisResult&gt;<br>(Parsed, structured data)]
+        L --> N[List&lt;AnamnesisResult&gt; (Structured Data)]
         N --> O{Update UI State}
         G1 --> O
     end
 
     subgraph Results Display
         O -- "setState() Triggered" --> P[AnamnesisScreen: _buildResultsSection()]
-        P -- "Renders List of Cards" --> Q[Display Analysis Results (ListView)]
-        P -- "Error Occurs (catch block)" --> R[Display Error Message]
+        P -- "Renders List of Cards" --> Q[Display Analysis Results]
+        P -- "Error Occurs" --> R[Display Error Message]
         R -- "Optional: 'Erneut versuchen' Button" --> F
     end
 
     subgraph Data Export
         Q -- "User Taps 'CSV Export' Button" --> S{_exportToCsv() Method}
-        S --> T[CSVExporter.exportResults()<br>(lib/utils/csv_exporter.dart)]
-        T -- "Converts AnamnesisResult List to CSV String" --> U(Temporary CSV File<br>via path_provider)
+        S --> T[CSVExporter.exportResults()]
+        T -- "Converts to CSV String" --> U(Temporary CSV File)
         U --> T
-        T -- "Triggers Native Share Dialog<br>via share_plus" --> V[Share Options<br>(Email, Messaging Apps, etc.)]
+        T -- "Triggers Native Share Dialog" --> V[Share Options]
     end
 
     %% Styling for better visual distinction
