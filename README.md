@@ -112,7 +112,9 @@ Follow these steps to set up and run the project locally on your development mac
 </p>
 
 
-'''mermaid 
+## 📊 Project Flow Diagram
+
+```mermaid
 graph TD
     %% --- App Initialization ---
     subgraph App Initialization
