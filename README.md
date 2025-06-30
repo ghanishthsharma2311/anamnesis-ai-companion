@@ -142,7 +142,6 @@ graph TD
     style U fill:#f3e5f5,stroke:#ba68c8,stroke-width:2px,color:#000
     style V fill:#ffebee,stroke:#ef5350,stroke-width:2px,color:#000
 
-
 ## 📸 App Screenshots & Examples
 
 <h3 align="center">Application Interface and Functionality</h3>
