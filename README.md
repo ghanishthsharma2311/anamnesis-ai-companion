@@ -88,60 +88,6 @@ Follow these steps to set up and run the project locally on your development mac
     ```
     *(You can replace `chrome` with other web browsers if installed.)*
 
-
-## 📊 Project Flow Diagram
-
-```mermaid
-graph TD
-    subgraph App Initialization
-        A[main.dart] --> B(Loads .env variables)
-        B --> C{Starts Flutter App<br>MyApp Widget}
-    end
-
-    subgraph User Interface
-        C --> D[AnamnesisScreen UI]
-        D -- "User Enters Transcript" --> E[TextFormField Input]
-        D -- "User Taps 'Analysieren' Button" --> F{_analyzeTranscript()}
-    end
-
-    subgraph Data Processing & AI Integration
-        F --> G1(Set _isLoading = true<br>Show Progress Indicator)
-        F -- "1. Load Questionnaire" --> H[QuestionnaireService.loadQuestionnaire()]
-        H -- "Reads FHIR Questionnaire JSON" --> I[FHIR Questionnaire Data]
-        I --> F
-        F -- "2. Analyze Transcript" --> J[OpenAIService.analyzeTranscript()]
-        J -- "Builds Prompt (Transcript + FHIR JSON)" --> K(OpenAI API Request)
-        K -- "Returns Raw JSON Response (linkId, answer)" --> J
-        J -- "Calls _parseApiResponse()" --> L[OpenAIService._parseApiResponse()]
-        L -- "For each linkId, calls _findQuestionText()" --> M[OpenAIService._findQuestionText()]
-        M -- "Returns Full Question Text" --> L
-        L --> N[List&lt;AnamnesisResult&gt; (Structured Data)]
-        N --> O{Update UI State}
-        G1 --> O
-    end
-
-    subgraph Results Display
-        O -- "setState() Triggered" --> P[AnamnesisScreen: _buildResultsSection()]
-        P -- "Renders List of Cards" --> Q[Display Analysis Results]
-        P -- "Error Occurs" --> R[Display Error Message]
-        R -- "Optional: 'Erneut versuchen' Button" --> F
-    end
-
-    subgraph Data Export
-        Q -- "User Taps 'CSV Export' Button" --> S{_exportToCsv()}
-        S --> T[CSVExporter.exportResults()]
-        T -- "Converts to CSV String" --> U(Temporary CSV File)
-        U --> T
-        T -- "Triggers Native Share Dialog" --> V[Share Options]
-    end
-
-    %% Styling for better visual distinction
-    style K fill:#e0f2f7,stroke:#64b5f6,stroke-width:2px,color:#000
-    style I fill:#fff8e1,stroke:#ffb300,stroke-width:2px,color:#000
-    style N fill:#e8f5e9,stroke:#81c784,stroke-width:2px,color:#000
-    style U fill:#f3e5f5,stroke:#ba68c8,stroke-width:2px,color:#000
-    style V fill:#ffebee,stroke:#ef5350,stroke-width:2px,color:#000
-
 ## 📸 App Screenshots & Examples
 
 <h3 align="center">Application Interface and Functionality</h3>
