@@ -89,6 +89,9 @@ Follow these steps to set up and run the project locally on your development mac
     *(You can replace `chrome` with other web browsers if installed.)*
 
 
+## 📊 Project Flow Diagram
+
+```mermaid
 graph TD
     subgraph App Initialization
         A[main.dart] --> B(Loads .env variables)
@@ -138,6 +141,7 @@ graph TD
     style N fill:#e8f5e9,stroke:#81c784,stroke-width:2px,color:#000
     style U fill:#f3e5f5,stroke:#ba68c8,stroke-width:2px,color:#000
     style V fill:#ffebee,stroke:#ef5350,stroke-width:2px,color:#000
+
 
 ## 📸 App Screenshots & Examples
 
