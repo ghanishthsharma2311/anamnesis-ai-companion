@@ -110,3 +110,58 @@ Follow these steps to set up and run the project locally on your development mac
 <p align="center">
   <em>Export and share results via CSV</em>
 </p>
+
+
+'''mermaid 
+graph TD
+    %% --- App Initialization ---
+    subgraph App Initialization
+        A[main.dart] --> B["Loads .env variables"]
+        B --> C["Starts Flutter App\nMyApp Widget"]
+    end
+
+ %% --- User Interface ---
+    subgraph User Interface
+        C --> D["AnamnesisScreen UI"]
+        D --> E["TextFormField: User enters transcript"]
+        D --> F["User taps 'Analysieren' button\n_calls _analyzeTranscript()_"]
+    end
+
+%% --- Data Processing & AI Integration ---
+    subgraph Data Processing & AI Integration
+        F --> G1["Set _isLoading = true_\nShow loading indicator"]
+        F --> H["Load Questionnaire\nQuestionnaireService.loadQuestionnaire()"]
+        H --> I["FHIR Questionnaire JSON"]
+        I --> F
+        F --> J["Analyze Transcript\nOpenAIService.analyzeTranscript()"]
+        J --> K["Builds prompt (transcript + questionnaire)\nCalls OpenAI API"]
+        K --> L["API returns response JSON (linkId, answer)"]
+        L --> M["Parse response\n_parseApiResponse()"]
+        M --> N["Find matching questions\n_findQuestionText()"]
+        N --> O["Returns List of structured data\nList<AnamnesisResult>"]
+        G1 --> P["Update UI state"]
+        O --> P
+    end
+
+%% --- Results Display ---
+    subgraph Results Display
+        P --> Q["Display results\n_render as cards_"]
+        P --> R["If error: Show error message"]
+        R --> F
+    end
+
+%% --- Data Export ---
+    subgraph Data Export
+        Q --> S["User taps 'Export to CSV'"]
+        S --> T["Convert results to CSV\nCSVExporter.exportResults()"]
+        T --> U["Write to temporary CSV file"]
+        T --> V["Trigger share dialog"]
+    end
+
+%% --- Styling for clarity ---
+    style K fill:#e0f2f7,stroke:#64b5f6,stroke-width:2px,color:#000
+    style I fill:#fff8e1,stroke:#ffb300,stroke-width:2px,color:#000
+    style O fill:#e8f5e9,stroke:#81c784,stroke-width:2px,color:#000
+    style U fill:#f3e5f5,stroke:#ba68c8,stroke-width:2px,color:#000
+    style V fill:#ffebee,stroke:#ef5350,stroke-width:2px,color:#000
+
