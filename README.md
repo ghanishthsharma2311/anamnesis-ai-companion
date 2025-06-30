@@ -88,7 +88,7 @@ Follow these steps to set up and run the project locally on your development mac
     ```
     *(You can replace `chrome` with other web browsers if installed.)*
 
-```mermaid
+
 graph TD
     subgraph App Initialization
         A[main.dart] --> B(Loads .env variables)
@@ -98,7 +98,7 @@ graph TD
     subgraph User Interface
         C --> D[AnamnesisScreen UI]
         D -- "User Enters Transcript" --> E[TextFormField Input]
-        D -- "User Taps 'Analysieren' Button" --> F{_analyzeTranscript() Method}
+        D -- "User Taps 'Analysieren' Button" --> F{_analyzeTranscript()}
     end
 
     subgraph Data Processing & AI Integration
@@ -125,7 +125,7 @@ graph TD
     end
 
     subgraph Data Export
-        Q -- "User Taps 'CSV Export' Button" --> S{_exportToCsv() Method}
+        Q -- "User Taps 'CSV Export' Button" --> S{_exportToCsv()}
         S --> T[CSVExporter.exportResults()]
         T -- "Converts to CSV String" --> U(Temporary CSV File)
         U --> T
@@ -138,6 +138,7 @@ graph TD
     style N fill:#e8f5e9,stroke:#81c784,stroke-width:2px,color:#000
     style U fill:#f3e5f5,stroke:#ba68c8,stroke-width:2px,color:#000
     style V fill:#ffebee,stroke:#ef5350,stroke-width:2px,color:#000
+
 ## 📸 App Screenshots & Examples
 
 <h3 align="center">Application Interface and Functionality</h3>
